@@ -1,5 +1,7 @@
 package com.loiane.estruturadados.vetor;
 
+import java.util.Arrays;
+
 public class Vetor {
 
 	
@@ -45,7 +47,72 @@ public class Vetor {
 		return false;
 	}
 	
+	public boolean adiciona(int posicao, String elemento) {
+		
+		posicaoValida(posicao);		
+		
+		//mover todos os elementos
+		for(int i=this.tamanho-1; i >= posicao;i--) {
+			this.elementos[i+1] = this.elementos[i];
+		}
+		this.elementos[posicao] = elemento;
+		this.tamanho++;
+		
+		return false;
+	}
+	
+
+	public int getTamanho() {
+		return tamanho;
+	}
+	@Override
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("[");
+		for(int i = 0; i < this.tamanho-1; i++) {
+			s.append(this.elementos[i]);
+			s.append(", ");
+		}
+		if(this.tamanho>0) {
+			s.append(this.elementos[this.tamanho-1]);
+		}
+		
+		s.append("]"); 
+		
+		return s.toString();
+	}
+	
+	public String busca(int posicao) {
+		posicaoValida(posicao);
+		
+		return this.elementos[posicao];
+	}
+	
+	
+	public int busca(String elemento) {
+		for (int i =0 ; i< this.elementos.length; i++) {
+			if(this.elementos[i].equals(elemento)) {
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+	
+	public void posicaoValida(int posicao) {
+		if(!(posicao >=0  && posicao < tamanho)) {
+			throw new IllegalArgumentException("Posição inválida");	
+		}
+	}
+	
+	
 }
+
+
+
+
+
+
 
 
 
