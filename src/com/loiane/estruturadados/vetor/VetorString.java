@@ -1,14 +1,12 @@
 package com.loiane.estruturadados.vetor;
 
-import java.util.Arrays;
-
-public class Vetor {
+public class VetorString {
 
 	
 	private String[] elementos;
 	private int tamanho;
 	
-	public Vetor(int capacidade) {
+	public VetorString(int capacidade) {
 		this.elementos = new String[capacidade];
 		this.tamanho = 0;
 	}
@@ -38,7 +36,8 @@ public class Vetor {
 		}
 	*/	
 	
-	public boolean adiciona ( String elemento) {		
+	public boolean adiciona ( String elemento) {
+		this.aumentaCapacidade();
 		if(this.tamanho < this.elementos.length) {
 			this.elementos[this.tamanho] = elemento;
 			this.tamanho++;
@@ -48,17 +47,17 @@ public class Vetor {
 	}
 	
 	public boolean adiciona(int posicao, String elemento) {
-		
 		posicaoValida(posicao);		
+		this.aumentaCapacidade();
 		
 		//mover todos os elementos
-		for(int i=this.tamanho-1; i >= posicao;i--) {
+		for(int i=this.tamanho-1; i>=posicao; i--) {
 			this.elementos[i+1] = this.elementos[i];
 		}
 		this.elementos[posicao] = elemento;
 		this.tamanho++;
 		
-		return false;
+		return true;
 	}
 	
 
@@ -103,6 +102,26 @@ public class Vetor {
 		if(!(posicao >=0  && posicao < tamanho)) {
 			throw new IllegalArgumentException("Posição inválida");	
 		}
+	}
+	
+	private void aumentaCapacidade() {
+		if(this.tamanho == this.elementos.length) {
+			String[] elementosNovos = new String[this.elementos.length*2];
+			
+			for(int i=0; i < this.tamanho; i++ ) {
+				elementosNovos[i] = this.elementos[i];
+		}
+			this.elementos = elementosNovos;
+		}
+	}
+
+
+	public void remove(int posicao) {
+		posicaoValida(posicao);
+		for(int i=posicao; i<this.tamanho -1; i++) {
+			this.elementos[i] = this.elementos[i+1];
+		}
+		this.tamanho--;
 	}
 	
 	

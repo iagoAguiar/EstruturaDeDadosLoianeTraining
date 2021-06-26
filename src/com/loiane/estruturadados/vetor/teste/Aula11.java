@@ -1,30 +1,25 @@
 package com.loiane.estruturadados.vetor.teste;
 
-import com.loiane.estruturadados.vetor.VetorString;
+import com.loiane.estruturadados.vetor.Lista;
 
-public class Aula7 {
+public class Aula11 {
 
 	public static void main(String[] args) throws Exception {
 		
 		
-		VetorString vetor  = new VetorString(10);
+		Lista<String> vetor  = new Lista<String>(3);
+		
 		
 		vetor.adiciona("B");
-		vetor.adiciona("C");
 		vetor.adiciona("F");
 		vetor.adiciona("G");
 		
-		
 		System.out.println(vetor);
-		
-		vetor.adiciona(0, "A");
+		vetor.remove(2);
 
 		System.out.println(vetor);
 		
-		
-		vetor.adiciona(3, "D");
-		
-		System.out.println(vetor);
+		System.out.println("---------------");
 		
 	}
 }
