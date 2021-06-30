@@ -30,7 +30,7 @@ public class VetorString {
 				this.elementos[this.tamanho] = elemento;
 				this.tamanho++;
 			} else {
-				throw new Exception("Vetor já está cheio, não é possível adicionar novos elementos");
+				throw new Exception("Vetor jï¿½ estï¿½ cheio, nï¿½o ï¿½ possï¿½vel adicionar novos elementos");
 			}
 			
 		}
@@ -100,7 +100,7 @@ public class VetorString {
 	
 	public void posicaoValida(int posicao) {
 		if(!(posicao >=0  && posicao < tamanho)) {
-			throw new IllegalArgumentException("Posição inválida");	
+			throw new IllegalArgumentException("Posiï¿½ï¿½o invï¿½lida");	
 		}
 	}
 	
@@ -123,7 +123,8 @@ public class VetorString {
 		}
 		this.tamanho--;
 	}
-	
+
+		
 	
 }
 

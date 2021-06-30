@@ -1,13 +1,15 @@
 package com.loiane.estruturadados.vetor;
 
-public class VetorObjetos {
+import java.util.ArrayList;
+
+public class VetorObjetos<T> {
 
 	
-	private Object[] elementos;
+	private T[] elementos;
 	private int tamanho;
 	
 	public VetorObjetos(int capacidade) {
-		this.elementos = new Object[capacidade];
+		this.elementos = (T[]) new Object[capacidade];
 		this.tamanho = 0;
 	}
 	
@@ -30,13 +32,13 @@ public class VetorObjetos {
 				this.elementos[this.tamanho] = elemento;
 				this.tamanho++;
 			} else {
-				throw new Exception("Vetor já está cheio, não é possível adicionar novos elementos");
+				throw new Exception("Vetor jï¿½ estï¿½ cheio, nï¿½o ï¿½ possï¿½vel adicionar novos elementos");
 			}
 			
 		}
 	*/	
 	
-	public boolean adiciona ( Object elemento) {
+	public boolean adiciona ( T elemento) {
 		this.aumentaCapacidade();
 		if(this.tamanho < this.elementos.length) {
 			this.elementos[this.tamanho] = elemento;
@@ -46,7 +48,7 @@ public class VetorObjetos {
 		return false;
 	}
 	
-	public boolean adiciona(int posicao, Object elemento) {
+	public boolean adiciona(int posicao, T elemento) {
 		posicaoValida(posicao);		
 		this.aumentaCapacidade();
 		
@@ -81,7 +83,7 @@ public class VetorObjetos {
 		return s.toString();
 	}
 	
-	public Object busca(int posicao) {
+	public T busca(int posicao) {
 		posicaoValida(posicao);
 		
 		return this.elementos[posicao];
@@ -100,13 +102,13 @@ public class VetorObjetos {
 	
 	public void posicaoValida(int posicao) {
 		if(!(posicao >=0  && posicao < tamanho)) {
-			throw new IllegalArgumentException("Posição inválida");	
+			throw new IllegalArgumentException("Posiï¿½ï¿½o invï¿½lida");	
 		}
 	}
 	
 	private void aumentaCapacidade() {
 		if(this.tamanho == this.elementos.length) {
-			Object[] elementosNovos = new Object[this.elementos.length*2];
+			T[] elementosNovos = (T[]) new Object[this.elementos.length*2];
 			
 			for(int i=0; i < this.tamanho; i++ ) {
 				elementosNovos[i] = this.elementos[i];
@@ -125,7 +127,64 @@ public class VetorObjetos {
 	}
 	
 	
+	//ExercÃ­cio 01
+	public boolean contem(Object o) {
+		return busca(o) >= 0;
+	}
+	
+	//Exercicio 02
+	public int ultimoIndex(T elemento) {
+		for(int i = this.tamanho-1 ; i>=0;i--) {
+			if(this.elementos[i].equals(elemento)) {
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+	//Exercicio 03
+    public void remove(T  elemento) {
+    	
+    	int pos = this.busca(elemento);
+    	if(pos > -1) {
+    		this.remove(pos);
+
+    	}
+    	
+
+    }
+    
+    // exercicio 04
+    public T obtem(int posicao) {
+
+    	return this.busca(posicao); 
+    }
+    
+    
+    //exercicio 05
+    public void limpar() {
+
+
+
+           for (int i = 0; i < tamanho; i++)
+
+               elementos[i] = null;
+
+
+           tamanho = 0;
+    }
+    
+    //Ercicio 06
+    
 }
+
+
+
+
+
+
+
+
 
 
 

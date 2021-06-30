@@ -8,6 +8,9 @@ public class Lista<T> {
 	private T[] elementos;
 	private int tamanho;
 	
+	
+	
+
 	public Lista(int capacidade) {
 		this.elementos = (T[]) new Object [capacidade];
 		this.tamanho = 0;
@@ -37,7 +40,7 @@ public class Lista<T> {
 				this.elementos[this.tamanho] = elemento;
 				this.tamanho++;
 			} else {
-				throw new Exception("Vetor já está cheio, não é possível adicionar novos elementos");
+				throw new Exception("Vetor jï¿½ estï¿½ cheio, nï¿½o ï¿½ possï¿½vel adicionar novos elementos");
 			}
 			
 		}
@@ -107,7 +110,7 @@ public class Lista<T> {
 	
 	public void posicaoValida(int posicao) {
 		if(!(posicao >=0  && posicao < tamanho)) {
-			throw new IllegalArgumentException("Posição inválida");	
+			throw new IllegalArgumentException("Posiï¿½ï¿½o invï¿½lida");	
 		}
 	}
 	
